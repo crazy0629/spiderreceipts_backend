@@ -26,6 +26,8 @@ const UserSchema = new mongoose_1.Schema({
         required: true,
     },
     password: { type: String, required: true },
+    isActive: { type: Boolean, required: true, default: false },
+    expireDate: { type: Date },
     index: {
         type: Number,
         required: true,
