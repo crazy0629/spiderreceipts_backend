@@ -16,6 +16,7 @@ const generateToken = (user) => {
         id: user.id,
         email: user.email,
         password: user.password,
+        index: user.index,
     }, config_1.SECRET_KEY, {
         expiresIn: 60 * 60 * 24,
     });
