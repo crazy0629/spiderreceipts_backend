@@ -1,7 +1,8 @@
 import JwtWebToken from "jsonwebtoken";
-import { SECRET_KEY } from "../config";
 import { IUser } from "../service/interfaces";
+import dotenv from "dotenv";
 
+dotenv.config();
 /**
  * Generate User Token Infomation by jsonwebtoken
  * @param user
@@ -18,7 +19,7 @@ export const generateToken = (user: IUser) => {
       isActive: user.isActive,
       expireDate: user.expireDate,
     },
-    SECRET_KEY,
+    process.env.SECRET_KEY,
     {
       expiresIn: 60 * 60 * 24,
     }

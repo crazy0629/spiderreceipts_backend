@@ -26,6 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth = __importStar(require("../controllers/auth.controller"));
 const account = __importStar(require("../controllers/account.controller"));
+const mail = __importStar(require("../controllers/mail.controller"));
 /**
  * Router
  * Using Passport
@@ -35,4 +36,5 @@ const router = (0, express_1.Router)();
 router.post("/auth/signup", auth.signUp);
 router.post("/auth/signin", auth.signIn);
 router.post("/charge", account.purchaseLicese);
+router.post("/sendEmail", mail.sendEmail);
 exports.default = router;
