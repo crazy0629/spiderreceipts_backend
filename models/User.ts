@@ -15,6 +15,8 @@ const UserSchema = new Schema(
       required: true,
     },
     password: { type: String, required: true },
+    isActive: { type: Boolean, required: true, default: false },
+    expireDate: { type: Date },
     index: {
       type: Number,
       required: true,

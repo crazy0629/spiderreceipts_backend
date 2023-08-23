@@ -25,12 +25,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth = __importStar(require("../controllers/auth.controller"));
+const account = __importStar(require("../controllers/account.controller"));
 /**
  * Router
  * Using Passport
  */
 const router = (0, express_1.Router)();
 // Authentication
-router.post("/auth/signup", auth.SignUp);
-router.post("/auth/signin", auth.SignIn);
+router.post("/auth/signup", auth.signUp);
+router.post("/auth/signin", auth.signIn);
+router.post("/charge", account.purchaseLicese);
 exports.default = router;
