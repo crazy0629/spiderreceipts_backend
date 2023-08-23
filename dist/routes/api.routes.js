@@ -32,4 +32,5 @@ const auth = __importStar(require("../controllers/auth.controller"));
 const router = (0, express_1.Router)();
 // Authentication
 router.post("/auth/signup", auth.SignUp);
+router.post("/auth/signin", auth.SignIn);
 exports.default = router;

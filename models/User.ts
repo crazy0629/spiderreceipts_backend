@@ -15,6 +15,10 @@ const UserSchema = new Schema(
       required: true,
     },
     password: { type: String, required: true },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
