@@ -1,15 +1,16 @@
-import { SERVER_PORT } from "./config";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
 import passport from "passport";
 import middlewarePassport from "./service/passport";
+import dotenv from "dotenv";
+dotenv.config();
 
 import apiRoutes from "./routes/api.routes";
 const app = express();
 
 // Settings
-app.set("port", SERVER_PORT);
+app.set("port", process.env.SERVER_PORT);
 
 // Middlewares
 app.use(cors());
