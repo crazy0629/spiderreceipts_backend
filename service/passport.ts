@@ -1,6 +1,8 @@
 import { Strategy, StrategyOptions, ExtractJwt } from "passport-jwt";
-import { SECRET_KEY } from "../config";
 import User from "../models/User";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 /**
  * StrategyOptions interface
@@ -8,7 +10,7 @@ import User from "../models/User";
  */
 const opts: StrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: SECRET_KEY,
+  secretOrKey: process.env.SECRET_KEY,
 };
 
 /**

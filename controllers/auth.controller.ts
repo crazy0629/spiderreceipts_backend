@@ -4,15 +4,6 @@ import { generateToken } from "../service/helper";
 import { IUser } from "../service/interfaces";
 import bcrypt from "bcrypt";
 
-// import { Mailgun_API_KEY } from "../config";
-// const nodemailer = require("nodemailer");
-
-// const fs = require("fs");
-// const mailgun = require("mailgun-js")({
-//   apiKey: Mailgun_API_KEY,
-//   domain: "bitpool.gg",
-// });
-
 export const signUp = async (req: Request, res: Response) => {
   if (!req.body.email || !req.body.password) {
     return res.json({
@@ -86,59 +77,3 @@ export const signIn = async (
     message: "The email or password are incorrect!",
   });
 };
-
-// export const sendEmail = async (req: Request, res: Response) => {
-//   const html = fs.readFileSync(`${__dirname}\\hello.html`, {
-//     encoding: "utf8",
-//     flag: "r",
-//   });
-
-// const data = {
-//   from: "bitpool@mail.bitsport.gg",
-//   to: "milan.jansen0629@gmail.com",
-//   subject: "Hello",
-//   html: html, // Pass the HTML file content here
-// };
-
-// mailgun.messages().send(data, (error: Error, body) => {
-//   if (error) {
-//     console.log(error);
-//     return res.json({
-//       success: false,
-//     });
-//   }
-//   console.log(body);
-//   return res.json({
-//     success: true,
-//   });
-// });
-
-//   const transporter = nodemailer.createTransport({
-//     service: "gmail",
-//     auth: {
-//       user: "milan.jansen0629@gmail.com",
-//       pass: "20010629crazy",
-//     },
-//   });
-
-//   const mailOptions = {
-//     from: "milan.jansen0629@gmail.com",
-//     to: "kenzo.egghead@gmail.com",
-//     subject: "HTML Email Example",
-//     html: html,
-//   };
-
-//   transporter.sendMail(mailOptions, function (error: any, info: any) {
-//     if (error) {
-//       console.log(error);
-//       return res.json({
-//         success: false,
-//       });
-//     } else {
-//       console.log("Email sent: " + info.response);
-//       return res.json({
-//         success: true,
-//       });
-//     }
-//   });
-// };

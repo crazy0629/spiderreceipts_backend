@@ -4,15 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const passport_jwt_1 = require("passport-jwt");
-const config_1 = require("../config");
 const User_1 = __importDefault(require("../models/User"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 /**
  * StrategyOptions interface
  * Using passport-jwt
  */
 const opts = {
     jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config_1.SECRET_KEY,
+    secretOrKey: process.env.SECRET_KEY,
 };
 /**
  * Instance Strategy Class
