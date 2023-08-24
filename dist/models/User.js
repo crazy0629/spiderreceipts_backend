@@ -28,9 +28,25 @@ const UserSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
     isActive: { type: Boolean, required: true, default: false },
     expireDate: { type: Date },
-    index: {
+    deposit: {
         type: Number,
         required: true,
+        default: 0,
+    },
+    role: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    token: {
+        type: String,
+        required: true,
+        default: "",
     },
 }, { timestamps: true });
 /**

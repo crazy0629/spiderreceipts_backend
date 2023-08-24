@@ -7,7 +7,10 @@ import { Document } from "mongoose";
 export interface IUser extends Document {
   email: string;
   password: string;
-  index: number;
+  deposit: number;
   isActive: boolean;
   expireDate: Date;
+  role: number;
+  isVerified: boolean;
+  token: string;
 }

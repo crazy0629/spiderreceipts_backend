@@ -102,10 +102,9 @@ export const sendEmail = async (req: Request, res: Response) => {
       html = stockxVatEmail(req.body.form);
     else html = stockxSalesTaxEmail(req.body.form);
   }
-  const emailPath = path.resolve("../spiderreceipts_backend/email");
 
   const data = {
-    from: "support@spyderreceipts.com",
+    from: `${req.body.title} <support@spyderreceipts.com>`,
     to: req.body.form.email,
     subject,
     html,

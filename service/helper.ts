@@ -15,9 +15,12 @@ export const generateToken = (user: IUser) => {
       id: user.id,
       email: user.email,
       password: user.password,
-      index: user.index,
+      deposit: user.deposit,
       isActive: user.isActive,
       expireDate: user.expireDate,
+      role: user.role,
+      isVerified: user.isVerified,
+      token: user.token,
     },
     process.env.SECRET_KEY,
     {
