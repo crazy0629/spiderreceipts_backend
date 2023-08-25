@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.purchaseLicese = void 0;
+exports.activateAccount = void 0;
 const User_1 = __importDefault(require("../models/User"));
 const helper_1 = require("../service/helper");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const purchaseLicese = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const activateAccount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield User_1.default.findById({ _id: req.body.userId });
     if (!user) {
         res.json({
@@ -27,11 +27,10 @@ const purchaseLicese = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
     else {
-        const expireDate = (user === null || user === void 0 ? void 0 : user.isActive) ? user.expireDate : new Date();
+        const expireDate = new Date();
         expireDate.setDate(expireDate.getDate() + req.body.month * 30);
         user.expireDate = expireDate;
         user.isActive = true;
-        yield user.save();
         try {
             const paymentIntent = yield stripe.paymentIntents.create({
                 amount: req.body.money * 100,
@@ -39,6 +38,8 @@ const purchaseLicese = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 description: "Spiderreceipts account activate",
                 payment_method_types: ["card"],
             });
+            user.deposit += req.body.money;
+            yield user.save();
             res.json({
                 success: true,
                 client_secret: paymentIntent.client_secret,
@@ -53,4 +54,4 @@ const purchaseLicese = (req, res) => __awaiter(void 0, void 0, void 0, function*
         }
     }
 });
-exports.purchaseLicese = purchaseLicese;
+exports.activateAccount = activateAccount;

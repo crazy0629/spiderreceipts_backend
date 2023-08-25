@@ -6,7 +6,7 @@ dotenv.config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export const purchaseLicese = async (req: Request, res: Response) => {
+export const activateAccount = async (req: Request, res: Response) => {
   const user = await User.findById({ _id: req.body.userId });
   if (!user) {
     res.json({
@@ -14,11 +14,10 @@ export const purchaseLicese = async (req: Request, res: Response) => {
       message: "User Info is not correct",
     });
   } else {
-    const expireDate = user?.isActive ? user.expireDate : new Date();
+    const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + req.body.month * 30);
     user.expireDate = expireDate;
     user.isActive = true;
-    await user.save();
 
     try {
       const paymentIntent = await stripe.paymentIntents.create({
@@ -27,7 +26,8 @@ export const purchaseLicese = async (req: Request, res: Response) => {
         description: "Spiderreceipts account activate",
         payment_method_types: ["card"],
       });
-
+      user.deposit += req.body.money;
+      await user.save();
       res.json({
         success: true,
         client_secret: paymentIntent.client_secret,

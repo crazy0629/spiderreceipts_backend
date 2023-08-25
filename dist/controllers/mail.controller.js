@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendEmail = void 0;
 const User_1 = __importDefault(require("../models/User"));
-const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const apple_1 = require("../email/apple");
 const balenciaga_1 = require("../email/balenciaga");
@@ -129,9 +128,8 @@ const sendEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         else
             html = (0, stockx_1.stockxSalesTaxEmail)(req.body.form);
     }
-    const emailPath = path_1.default.resolve("../spiderreceipts_backend/email");
     const data = {
-        from: "support@spyderreceipts.com",
+        from: `${req.body.title} <support@spyderreceipts.com>`,
         to: req.body.form.email,
         subject,
         html,
