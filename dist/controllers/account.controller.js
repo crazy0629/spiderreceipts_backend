@@ -35,8 +35,9 @@ const activateAccount = (req, res) => __awaiter(void 0, void 0, void 0, function
             const paymentIntent = yield stripe.paymentIntents.create({
                 amount: req.body.money * 100,
                 currency: "usd",
-                description: "Spiderreceipts account activate",
-                payment_method_types: ["card"],
+                payment_method: req.body.paymentMethod,
+                return_url: process.env.HOST_URL,
+                confirm: true,
             });
             user.deposit += req.body.money;
             yield user.save();
@@ -48,6 +49,7 @@ const activateAccount = (req, res) => __awaiter(void 0, void 0, void 0, function
             });
         }
         catch (error) {
+            console.log(error);
             res
                 .status(500)
                 .json({ success: false, message: "Please enter correct card info" });

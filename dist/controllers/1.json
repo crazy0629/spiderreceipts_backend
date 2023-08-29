@@ -1,0 +1,126 @@
+[
+    {
+        "money": {
+            "busd": 0,
+            "usdt": 0,
+            "usd": 0,
+            "bitp": 0,
+            "quest": 3,
+            "cake": 0
+        },
+        "bonus": {
+            "busd": 0,
+            "usdt": 0,
+            "usd": 0,
+            "bitp": 0,
+            "quest": 0,
+            "cake": 0
+        },
+        "earnMoney": {
+            "busd": 0,
+            "usdt": 0,
+            "bitp": 0,
+            "cake": 0,
+            "usd": 0
+        },
+        "address": {
+            "ether": {
+                "privateKey": "0x6c6046da086031ef9ee6b0796169eff3fc249b470a05591a71e3946c1760d86d",
+                "address": "0xf01f1B1edeBd270F89D0ff586A61c2C54Eaa2c92"
+            },
+            "bitcoin": {
+                "privateKey": "0x6c6046da086031ef9ee6b0796169eff3fc249b470a05591a71e3946c1760d86d",
+                "address": "0xf01f1B1edeBd270F89D0ff586A61c2C54Eaa2c92"
+            },
+            "tron": {
+                "privateKey": "143149358512dcd25db47b87789f8a9e93be5aa8494df4111b7ae6049861ba56",
+                "address": "TCDuamkK9LbfDKZyo3wMFHtB5SELAuQEJN"
+            }
+        },
+        "txcount": {
+            "usd": 0,
+            "busd": 0,
+            "usdt": 0,
+            "cake": 0
+        },
+        "airdropIndex": 3,
+        "referralId": 1491,
+        "referralCnt": 0,
+        "latestEarnAmount": 0,
+        "latestEarnUnit": "BUSD",
+        "latestPlayedTotalStreak": 0,
+        "latestPlayedCurStreak": 0,
+        "ipAddress": "102.88.36.23",
+        "index": 1,
+        "_id": "64e49f07e0d19a9c232873f5",
+        "username": "Dempsey1991",
+        "email": "akinremiademola1989@gmail.com",
+        "role": 0,
+        "password": "$2b$10$UGpmVZ0MoAT12Ssh/5xPVOFv4cHPvN57a/k1a2DjWl24GaeDXR.JC",
+        "createdAt": "2023-08-22T11:41:59.015Z",
+        "updatedAt": "2023-08-22T11:44:41.829Z",
+        "__v": 0
+    },
+    {
+        "money": {
+            "busd": 0,
+            "usdt": 0,
+            "usd": 0,
+            "bitp": 0,
+            "quest": 3,
+            "cake": 0
+        },
+        "bonus": {
+            "busd": 0,
+            "usdt": 0,
+            "usd": 0,
+            "bitp": 0,
+            "quest": 0,
+            "cake": 0
+        },
+        "earnMoney": {
+            "busd": 0,
+            "usdt": 0,
+            "bitp": 0,
+            "cake": 0,
+            "usd": 0
+        },
+        "address": {
+            "ether": {
+                "privateKey": "0x66681182e7f45eab9387e171730c3955cdd7a357cc561f70447126034f205273",
+                "address": "0x4d398D4b92fDf128E4c269381e75eee49b7A2440"
+            },
+            "bitcoin": {
+                "privateKey": "0x66681182e7f45eab9387e171730c3955cdd7a357cc561f70447126034f205273",
+                "address": "0x4d398D4b92fDf128E4c269381e75eee49b7A2440"
+            },
+            "tron": {
+                "privateKey": "f6d5911c96fb02507a720494830716215c1295d192be0deb1789135df2f76bcb",
+                "address": "TU6oKv7xUMGxXcvfUxwB4M4XEVjLdeqGkH"
+            }
+        },
+        "txcount": {
+            "usd": 0,
+            "busd": 0,
+            "usdt": 0,
+            "cake": 0
+        },
+        "airdropIndex": 3,
+        "referralId": 1061,
+        "referralCnt": 0,
+        "latestEarnAmount": 0,
+        "latestEarnUnit": "BUSD",
+        "latestPlayedTotalStreak": 0,
+        "latestPlayedCurStreak": 0,
+        "ipAddress": "105.113.95.176",
+        "index": 2,
+        "_id": "64e49ff70b61f89fe0bce6f6",
+        "username": "Gibor24",
+        "email": "godswill.ibor@gmail.com",
+        "role": 0,
+        "password": "$2b$10$.7OaKaAcT.VEe7IuAM9CReS3Jb.52Vpky7S88lnd6dEnwI9iEk17e",
+        "createdAt": "2023-08-22T11:45:59.994Z",
+        "updatedAt": "2023-08-22T11:51:53.548Z",
+        "__v": 0
+    }
+]

@@ -74,17 +74,22 @@ export const signUp = async (req: Request, res: Response) => {
   }
 
   const user = await User.findOne({ email: req.body.email });
-  if (user && user.isVerified) {
+
+  if (user) {
     return res.json({ success: false, message: "User already exists!" });
   }
 
-  if (user && !user.isVerified) {
-    await sendVerificationEmail(user.token, user.email);
-    return res.json({
-      success: true,
-      message: "Please check your inbox and verify your email",
-    });
-  }
+  // if (user && user.isVerified) {
+  //   return res.json({ success: false, message: "User already exists!" });
+  // }
+
+  // if (user && !user.isVerified) {
+  //   await sendVerificationEmail(user.token, user.email);
+  //   return res.json({
+  //     success: true,
+  //     message: "Please check your inbox and verify your email",
+  //   });
+  // }
 
   let role = 0;
 
@@ -112,10 +117,10 @@ export const signUp = async (req: Request, res: Response) => {
   const newUser = new User(payload);
   await newUser.save();
 
-  await sendVerificationEmail(token, req.body.email);
+  // await sendVerificationEmail(token, req.body.email);
   return res.json({
     success: true,
-    message: "Please check your inbox and verify your email",
+    message: "Successfully registered!",
   });
 };
 
@@ -139,14 +144,14 @@ export const signIn = async (
       verifyIssue: false,
     });
   }
-  if (user && !user.isVerified) {
-    await sendVerificationEmail(user.token, user.email);
-    return res.json({
-      success: false,
-      message: "You need to verify your email",
-      verifyIssue: true,
-    });
-  }
+  // if (user && !user.isVerified) {
+  //   await sendVerificationEmail(user.token, user.email);
+  //   return res.json({
+  //     success: false,
+  //     message: "You need to verify your email",
+  //     verifyIssue: true,
+  //   });
+  // }
 
   const isMatch = await bcrypt.compare(req.body.password, user.password);
   if (isMatch) {
