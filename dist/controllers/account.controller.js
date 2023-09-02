@@ -49,10 +49,10 @@ const activateAccount = (req, res) => __awaiter(void 0, void 0, void 0, function
             });
         }
         catch (error) {
-            console.log(error);
-            res
-                .status(500)
-                .json({ success: false, message: "Please enter correct card info" });
+            res.json({
+                success: false,
+                message: "Error happened while working on payment",
+            });
         }
     }
 });
