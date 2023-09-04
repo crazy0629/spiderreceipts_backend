@@ -14,3 +14,13 @@ export interface IUser extends Document {
   isVerified: boolean;
   token: string;
 }
+
+/**
+ * IEmailHistory Interface
+ * Document class inheritance
+ */
+export interface IEmailHistory extends Document {
+  userId: string;
+  email: string;
+  sentDate: Date;
+}

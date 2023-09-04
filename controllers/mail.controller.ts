@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/User";
+import EmailHistory from "../models/EmailHistory";
 import path from "path";
 import dotenv from "dotenv";
 import { appleEmail } from "../email/apple";
@@ -26,6 +27,12 @@ const mailgun = require("mailgun-js")({
   apiKey: process.env.Mailgun_API_KEY,
   domain: "spyderreceipts.com",
 });
+
+export const getMailHistory = async (req: Request, res: Response) => {
+  await EmailHistory.find({ userId: req.body.userId }).then((models: any) => {
+    res.json({ models });
+  });
+};
 
 export const sendEmail = async (req: Request, res: Response) => {
   const user = await User.findById({ _id: req.body.userId });
@@ -117,6 +124,16 @@ export const sendEmail = async (req: Request, res: Response) => {
         message: "Error found while sending emails.",
       });
     }
+
+    const newHistory = {
+      userId: req.body.userId,
+      email: req.body.email,
+      sentDate: Date.now(),
+    };
+
+    const newMHistory = new EmailHistory(newHistory);
+    newMHistory.save();
+
     return res.json({
       success: true,
       message: "Email Successfully sent.",
