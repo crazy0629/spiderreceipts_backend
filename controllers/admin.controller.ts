@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
 import User from "../models/User";
+import EmailHistory from "../models/EmailHistory";
 
 export const getAllUser = async (req: Request, res: Response) => {
   User.find({ role: 0 }).then((models: any) => {
-    res.json({ models });
+    EmailHistory.find().then((models1: any) => {
+      res.json({ user: models, history: models1 });
+    });
   });
 };
 

@@ -11,6 +11,7 @@ const MHistorySchema = new Schema(
       required: true,
     },
     email: { type: String, required: true },
+    title: { type: String, required: true },
     sentDate: { type: Date, rquired: true },
   },
   { timestamps: true }
