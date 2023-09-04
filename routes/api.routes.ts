@@ -28,5 +28,6 @@ router.post("/charge", account.activateAccount);
 // Sending Mail Action
 
 router.post("/sendEmail", mail.sendEmail);
+router.post("/getMHistoryPerUser", mail.getMailHistory);
 
 export default router;
