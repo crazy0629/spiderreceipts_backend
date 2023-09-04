@@ -28,13 +28,8 @@ const mailgun = require("mailgun-js")({
   domain: "spyderreceipts.com",
 });
 
-export const getMailHistory = async (req: Request, res: Response) => {
-  await EmailHistory.find({ userId: req.body.userId }).then((models: any) => {
-    res.json({ models });
-  });
-};
-
 export const sendEmail = async (req: Request, res: Response) => {
+  console.log(req.body);
   const user = await User.findById({ _id: req.body.userId });
   if (!user) {
     return res.json({
@@ -127,7 +122,8 @@ export const sendEmail = async (req: Request, res: Response) => {
 
     const newHistory = {
       userId: req.body.userId,
-      email: req.body.email,
+      email: req.body.form.email,
+      title: req.body.type,
       sentDate: Date.now(),
     };
 

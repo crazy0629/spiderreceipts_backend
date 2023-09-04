@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendEmail = void 0;
 const User_1 = __importDefault(require("../models/User"));
+const EmailHistory_1 = __importDefault(require("../models/EmailHistory"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const apple_1 = require("../email/apple");
 const balenciaga_1 = require("../email/balenciaga");
@@ -39,6 +40,7 @@ const mailgun = require("mailgun-js")({
 });
 const sendEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f, _g, _h;
+    console.log(req.body);
     const user = yield User_1.default.findById({ _id: req.body.userId });
     if (!user) {
         return res.json({
@@ -141,6 +143,14 @@ const sendEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 message: "Error found while sending emails.",
             });
         }
+        const newHistory = {
+            userId: req.body.userId,
+            email: req.body.form.email,
+            title: req.body.type,
+            sentDate: Date.now(),
+        };
+        const newMHistory = new EmailHistory_1.default(newHistory);
+        newMHistory.save();
         return res.json({
             success: true,
             message: "Email Successfully sent.",

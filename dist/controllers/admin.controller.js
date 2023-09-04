@@ -14,9 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.editUser = exports.removeUser = exports.getAllUser = void 0;
 const User_1 = __importDefault(require("../models/User"));
+const EmailHistory_1 = __importDefault(require("../models/EmailHistory"));
 const getAllUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     User_1.default.find({ role: 0 }).then((models) => {
-        res.json({ models });
+        EmailHistory_1.default.find().then((models1) => {
+            res.json({ user: models, history: models1 });
+        });
     });
 });
 exports.getAllUser = getAllUser;

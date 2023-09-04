@@ -22,5 +22,6 @@ export interface IUser extends Document {
 export interface IEmailHistory extends Document {
   userId: string;
   email: string;
+  title: string;
   sentDate: Date;
 }
